@@ -6,11 +6,11 @@ public interface VendingMachine {
 
     public int getBalance();
 
-    public int request(Product id);
+    public Product request(int id);
 
     public int endSession();
 
-    public String getDescription(Product id);
+    public String getDescription(int id);
 
     public String [] getProducts();
 
