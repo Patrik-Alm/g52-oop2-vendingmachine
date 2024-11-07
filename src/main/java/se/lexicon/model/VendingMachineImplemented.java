@@ -18,12 +18,6 @@ public class VendingMachineImplemented implements VendingMachine {
     }
 
     @Override
-    public int getBalance() {
-
-        return depositPool;
-    }
-
-    @Override
     public Product request(int id) {
 
         for (int i = 0; i < products.length; i++) {
@@ -41,6 +35,7 @@ public class VendingMachineImplemented implements VendingMachine {
 
             }
         }
+        // Or better a message with product not found
         return null;
     }
 
@@ -58,12 +53,36 @@ public class VendingMachineImplemented implements VendingMachine {
 
             if (id == products[i].id) {
 
-                return products[i].examine();
+                StringBuilder sb = new StringBuilder();
+
+                sb.append(System.lineSeparator());
+                sb.append("Product id: ");
+                sb.append(products[i].id);
+                sb.append(System.lineSeparator());
+                sb.append("Product name: ");
+                sb.append(products[i].productName);
+                sb.append(System.lineSeparator());
+                sb.append("Description: ");
+                sb.append(products[i].description);
+                sb.append(System.lineSeparator());
+                sb.append("Characteristics: ");
+                sb.append(products[i].characteristics);
+                sb.append(System.lineSeparator());
+                sb.append("Product price: ");
+                sb.append(products[i].price);
+                sb.append(System.lineSeparator());
+
+                return sb.toString();
             }
         }
         return null;
     }
 
+    @Override
+    public int getBalance() {
+
+        return depositPool;
+    }
 
     @Override
     public String[] getProducts() {
